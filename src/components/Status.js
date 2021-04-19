@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Status() {
+function Status(props) {
   return (
     <div>
-      x issues open
+      {props.issueCount} issues open
     </div>
   )
 }

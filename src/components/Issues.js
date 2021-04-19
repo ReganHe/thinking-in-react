@@ -18,7 +18,7 @@ function Issues(props) {
   })
   return (
     <div>
-      <Status />
+      <Status issueCount={props.issuesToShow.length} />
       {/* <Issue /> */}
       {allIssues}
     </div>
