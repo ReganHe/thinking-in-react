@@ -14,12 +14,38 @@ class App extends Component {
     }
   }
 
+  handleInput = (e) => {
+    let si = e.target.value
+
+    if(si.length > 0) {
+      let filteredIssues = apiResponse.filter((issue) => {
+        if(issue.title.includes(si)) {
+          return true
+        }
+        return false
+      })
+      
+      console.log(filteredIssues)
+      
+      this.setState({
+        searchInput: e.target.value,
+        filteredIssues: filteredIssues
+      })
+    }
+    else {
+      this.setState({
+        searchInput: e.target.value,
+        filteredIssues: apiResponse
+      })
+    }
+  }
+
   render() {
     const { searchInput, filteredIssues } = this.state 
 
     return (
       <div>
-        <SearchBar searchInput={searchInput} />
+        <SearchBar searchInput={searchInput} handleInput={this.handleInput} />
         <Issues issuesToShow={filteredIssues} />
       </div>
     )
